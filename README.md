@@ -2,7 +2,7 @@ virtualcampfire
 ===============
 
 
-A copy of http://virtualcampfire.co.uk. 
+Copied from http://virtualcampfire.co.uk before it disappeared. 
 
 
 # Notes
@@ -24,6 +24,11 @@ This is done by a Github action that runs the script `site_jinja.py` and commits
 
 # Lyric format 
 The lyrics are html files with a strict format, stored in the `lyrics` directory.
+The expected html tags are: 
+- title
+- h1
+- pre
+- i is used to indicate chorus
 
 # Naming convention
 
@@ -36,7 +41,7 @@ This is parsed to get the lyric file name.
 lyrics/<Song Title>.html
 ```
 All versions of a song have only one lyrics file. This maybe a weakness.
-lyrics/Example.html is the template. 
+lyrics/Example.html is the template for the lyric files.
 
 
 # Song Data
@@ -48,8 +53,8 @@ and saved as songs.csv
 
 # Song  Ingestion Process
 
-1. Look at ingestion Sheet to find when and where recorded
-2. Download from email in correct name format (regarless of mp3/mp4)
+1. Ideally you know when and where recorded
+2. Download from email/whatsapp using the naming convention (regardless of mp3/mp4)
 3. If mp4 convert to mp3 at https://www.freeconvert.com/mp3-to-mp4/
 4. Copy lyrics/Example.html to lyrics/<Song Title>.html
 5. Update lyrics/<Song Title>.html with the lyrics from the PDF of the 2017 songbook
@@ -64,4 +69,5 @@ and saved as songs.csv
 
 # To Do
 - Create song book content files for each song book
-- Add lyrics for every song
+- ~~Add lyrics for every song~~
+- Regenerate lyrics files giving all recordings of that song  

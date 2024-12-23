@@ -20,9 +20,6 @@ jobs:
     - name: List all files
       run: cd mp3; ls *.mp3 > ../All_Songs.txt
 
-    - name: List all World Music
-      run: cd mp3; find * -name '*WM*' > ../World_Music.txt
-
     - name: List all yet to be sung
       run: cd mp3; ls *.mp3 | grep "(Not_Recorded_Yet)" > ../Not_Recorded_Yet.txt
 
