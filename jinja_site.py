@@ -28,10 +28,12 @@ file_in = sys.argv[1]
 file_out = file_in.replace(".txt", ".html")
 page_name = file_in.replace(".txt", "").replace("_", " ")
 songs = []
+song_count = 0
 with (open(file_in, 'r') as input):
     for line in input:
         if line.startswith("#"):
             continue
+        song_count += 1
         song = {}
         file_name = line.strip()
         title_version = file_name.replace(".mp3", "")
@@ -62,6 +64,6 @@ environment = Environment(loader=FileSystemLoader("."))
 page_template = environment.get_template("jinja_page.template")
 
 with open(file_out, mode="w", encoding="utf-8") as output:
-    output.write(page_template.render(songs=songs, dateStamp=datetime.now(), page_name=page_name))
+    output.write(page_template.render(songs=songs, dateStamp=datetime.now(), page_name=page_name, song_count=song_count))
     print(f"... wrote {file_out}")
 
