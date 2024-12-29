@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 import sys
 import os
+import glob
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime, timedelta
 from tinytag import TinyTag
+from bs4 import BeautifulSoup
+
+
 '''
 List of possible attributes you can get with TinyTag:
 
@@ -24,19 +28,22 @@ tag.track_total   # total number of tracks as string
 tag.year          # year or data as string
 '''
 
-file_in = sys.argv[1]
-file_out = file_in.replace(".txt", ".html")
-page_name = file_in.replace(".txt", "").replace("_", " ")
-songs = []
-song_count = 0
-with (open(file_in, 'r') as input):
-    for line in input:
-        if line.startswith("#"):
-            continue
-        song_count += 1
+
+def recording_list_from_file(file_in):
+    recording_list = []
+    with (open(file_in, 'r') as input):
+        for line in input:
+            if line.startswith("#"):
+               continue
+            file_name = line.strip()
+            recording_list.append(file_name)
+    return recording_list
+
+def songs_from_recording_list(recording_list):
+    songs = []
+    for recording_file_name in recording_list:
         song = {}
-        file_name = line.strip()
-        title_version = file_name.replace(".mp3", "")
+        title_version = recording_file_name.replace(".mp3", "")
         title = title_version.split("(")[0]
         title = title.strip()
         if len(title_version.split("(")) == 2:
@@ -52,18 +59,67 @@ with (open(file_in, 'r') as input):
         song["lyric_exists"] = os.path.exists(lyric_name)
         title = title.replace("_", " ")
         song["title"] = title
-        path = 'mp3/' + file_name
+        path = 'mp3/' + recording_file_name
         song["path"] = path
         song["escaped_path"] = path.replace("'", "\\'")
         tags = TinyTag.get(path)
         song["duration"] = str(timedelta(seconds=round(tags.duration)))
         song["size"] = round((tags.filesize / 1048576), 2)
         songs.append(song)
+    return songs
 
-environment = Environment(loader=FileSystemLoader("."))
-page_template = environment.get_template("jinja_recording_list.template")
+def output_song_list(song_list_file):
+    file_out = song_list_file.replace(".txt", ".html")
+    page_name = song_list_file.replace(".txt", "").replace("_", " ")
+    songs = songs_from_recording_list(recording_list_from_file(song_list_file))
+    environment = Environment(loader=FileSystemLoader("."))
+    page_template = environment.get_template("jinja_recording_list.template")
+    with open(file_out, mode="w", encoding="utf-8") as output:
+        output.write(
+            page_template.render(songs=songs,
+                                 dateStamp=datetime.now(),
+                                 page_name=page_name,
+                                 song_count=len(songs)))
+        print(f"... wrote {song_list_file.replace('.txt', '.html')}")
 
-with open(file_out, mode="w", encoding="utf-8") as output:
-    output.write(page_template.render(songs=songs, dateStamp=datetime.now(), page_name=page_name, song_count=song_count))
-    print(f"... wrote {file_out}")
+def output_new_lyric_page(lyric_file):
+    recording_stem = lyric_file.replace(".html", "")
+    recordings = [i.replace("\\","/") for i in glob.glob("mp3/" + recording_stem + "*")]
+    recording_list = [i.replace("mp3/", "") for i in recordings]
+    print(recording_list)
+    songs = songs_from_recording_list(recording_list)
+    environment = Environment(loader=FileSystemLoader("."))
+    page_template = environment.get_template("plain.template")
+    with open("lyrics/" + lyric_file, encoding="utf-8") as fp:
+        soup = BeautifulSoup(fp, 'html.parser')
+        title = soup.title.string.strip()
+        try:
+            lyric = soup.pre.prettify()
+        except AttributeError:
+            print("Failed on " + lyric_file)
+            print(soup.pre)
+        lyric = soup.pre.prettify().strip()
+        with open("new/" + lyric_file, mode="w", encoding="utf-8") as output:
+            output.write(
+                page_template.render(title=title,
+                                     lyric=lyric,
+                                     songs=songs,
+                                     dateStamp=datetime.now()))
 
+
+def output_all_lyric_pages(directory):
+    lyrics = [i.replace("\\","/").replace(directory, "") for i in glob.glob(directory + "*.html")]
+    for lyric in lyrics:
+        print (lyric)
+        output_new_lyric_page(lyric)
+
+if __name__ == '__main__':
+    arg1 = sys.argv[1]
+    if arg1.endswith(".txt"):
+        output_song_list(arg1)
+    elif arg1.endswith(".html"):
+        output_new_lyric_page(arg1)
+    elif arg1.endswith("lyrics/"):
+        output_all_lyric_pages(arg1)
+    else:
+        print("missing .txt file")

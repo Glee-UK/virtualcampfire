@@ -1,0 +1,42 @@
+<html>
+<head>
+ <title>
+  {{title}}
+ </title>
+ <script type="text/javascript" src="player.js"></script>
+ <link rel="stylesheet" type="text/css" href="../songbook.css" media="screen" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div align="center">
+<h1>
+  {{title}}
+</h1>
+   <audio
+   id="player"
+   type="audio/mpeg"
+   style="width: 60%;align:center;"
+   controls
+   loop
+   src="../{{songs[0]['escaped_path']}}"
+  >
+Sorry: your browser appears to be unable to stream .mp3 audio.
+  </audio>
+<div style="width:25em; text-align:left;">
+<pre>
+{{lyric}}
+</pre>
+</div>
+<div style="margin-top:210px;text-align:center; width:100%;  border:0px solid orange;">
+{% include "recording_table.templet" %}
+</div>
+<p>
+Email <a href="mailto:tim.pizey+vc@gmail.com">Tim</a> to contribute songs or feedback.
+</p>
+<p>
+Last updated {{dateStamp}}.
+</p>
+</div>
+</body>
+</html>
+
