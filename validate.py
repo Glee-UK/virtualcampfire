@@ -16,25 +16,14 @@
 # Edit songs_sorted.csv to move first line back to top
 # mv songs_sorted.csv songs.csv
 # Upload to Google Sheets and overwrite current sheet.
-# It might be better to keep this file away from teh rest of the human editted sheet.
+# It might be better to keep this file away from the rest of the human edited sheet.
 #
-
-
-
 
 
 import csv
 import os
 
-rows = {}
-with open('songs.csv', newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        rows[row['FileName']] = row
-
 songs = {}
-
-# assign directory
 directory = 'mp3'
 
 # iterate over files in
@@ -63,7 +52,11 @@ for file_name in os.listdir(directory):
         songs[song['file_name']] = song
 
 
-# Check the sheet
+rows = {}
+with open('songs.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        rows[row['FileName']] = row
 
 for row in rows:
     if (not row in songs):
