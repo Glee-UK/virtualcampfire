@@ -99,7 +99,7 @@ def output_new_lyric_page(lyric_file):
             print("Failed on " + lyric_file)
             print(soup.pre)
         lyric = soup.pre.prettify().strip()
-        with open("new/" + lyric_file, mode="w", encoding="utf-8") as output:
+        with open("lyrics/" + lyric_file, mode="w", encoding="utf-8") as output:
             output.write(
                 page_template.render(title=title,
                                      lyric=lyric,
