@@ -65,7 +65,7 @@ and saved as songs.csv
 10. git commit -m "Added <Song Title>"
 11. git pull origin gh-pages
 12. git push origin gh-pages
-13. tag incoming email with fsc/vc34
+13. tag incoming email with fsc/vc24
 
 # To Do
 - Create song book content files for each song book
