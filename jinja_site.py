@@ -61,7 +61,7 @@ with (open(file_in, 'r') as input):
         songs.append(song)
 
 environment = Environment(loader=FileSystemLoader("."))
-page_template = environment.get_template("jinja_page.template")
+page_template = environment.get_template("jinja_recording_list.template")
 
 with open(file_out, mode="w", encoding="utf-8") as output:
     output.write(page_template.render(songs=songs, dateStamp=datetime.now(), page_name=page_name, song_count=song_count))
