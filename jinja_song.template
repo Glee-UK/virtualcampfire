@@ -3,8 +3,8 @@
  <title>
   {{title}}
  </title>
- <script type="text/javascript" src="player.js"></script>
- <link rel="stylesheet" type="text/css" href="../songbook.css" media="screen" />
+ <script type="text/javascript" src="{{relative_path}}player.js"></script>
+ <link rel="stylesheet" type="text/css" href="{{relative_path}}songbook.css" media="screen" />
  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -18,7 +18,7 @@
    style="width:40%; align:center;"
    controls
    loop
-   src="../{{songs[0]['escaped_path']}}"
+   src="{{relative_path}}{{songs[0]['escaped_path']}}"
   >
 Sorry: your browser appears to be unable to stream .mp3 audio.
   </audio>

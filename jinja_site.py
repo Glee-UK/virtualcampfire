@@ -79,7 +79,9 @@ def output_song_list(song_list_file):
             page_template.render(songs=songs,
                                  dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                  page_name=page_name,
-                                 song_count=len(songs)))
+                                 song_count=len(songs),
+                                 relative_path=""
+                                 ))
         print(f"... wrote {song_list_file.replace('.txt', '.html')}")
 
 def output_song_page(lyric_file):
@@ -104,7 +106,9 @@ def output_song_page(lyric_file):
                 page_template.render(title=title,
                                      lyric=lyric,
                                      songs=songs,
-                                     dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                                     dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                                     relative_path="../"
+                                     ))
 
 
 def output_all_lyric_pages(directory):
