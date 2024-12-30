@@ -26,7 +26,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
 {{lyric}}
 </div>
 <div style="margin-top:10px; text-align:center; width:100%;  border:0px solid orange;">
-{% include "recording_table.templet" %}
+{% include "jinja_recording_table.templet" %}
 </div>
 <p>
 Email <a href="mailto:tim.pizey+vc@gmail.com">Tim</a> to contribute songs or feedback.

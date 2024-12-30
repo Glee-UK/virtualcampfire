@@ -54,7 +54,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
 </div>
 
 <div style="margin-top:210px;text-align:center; width:100%;  border:0px solid orange;">
-{% include "recording_table.templet" %}
+{% include "jinja_recording_table.templet" %}
 </div>
 <div style="text-align:center; width:100%; margin: auto; border:0px solid cyan;">
 <div style="text-align:left;   width:80%;  margin: auto; border:0px solid pink;">

@@ -33,13 +33,11 @@
      </a>
   </td>
   <td>
-    {% if song.version != ""  %}
     {{song.version}}
-    {% endif %}
   </td>
   <td valign="center">
   {% if song.lyric_exists  %}
-	<a href="{{song.lyric_name}}" target = "_" title="Lyrics for {{song.title}}">
+	<a href="{{relative_path}}{{song.lyric_name}}" target = "_" title="Lyrics for {{song.title}}">
 	  <svg
 	      xmlns="http://www.w3.org/2000/svg"
           fill="#ffffff"
