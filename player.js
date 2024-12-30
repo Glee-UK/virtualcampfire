@@ -1,5 +1,9 @@
 function debug(str) { 
-    // alert(str);
+  //   alert(str);
+}
+function filenameFromUrl(url) {
+  var parts = url.split('/');
+  return parts[parts.length - 1];
 }
 var currentTimeVar = 0;
 function choose(url) {
@@ -12,7 +16,7 @@ function choose(url) {
          +'\ntime:' + window.currentAudioElement.currentTime
     );
     if (window.currentAudioElement.paused) {
-      if(window.currentAudioElement.src.endsWith(url)) {
+      if(window.currentAudioElement.src.endsWith(filenameFromUrl(url))) {
         window.currentAudioElement.currentTime = currentTimeVar;
         debug('window.currentAudioElement.currentTime:' + window.currentAudioElement.currentTime);
       } else {
@@ -26,7 +30,7 @@ function choose(url) {
          +'\ntime:' + window.currentAudioElement.currentTime
          );
   
-      if(window.currentAudioElement.src.endsWith(url)) {
+      if(window.currentAudioElement.src.endsWith(filenameFromUrl(url))) {
         currentTimeVar = window.currentAudioElement.currentTime;
         debug('window.currentAudioElement.currentTime:' + window.currentAudioElement.currentTime);
         window.currentAudioElement.pause();
@@ -35,7 +39,7 @@ function choose(url) {
          window.currentAudioElement.src = url;
          window.currentAudioElement.play();
       }
-  
+
     }
   
   }
