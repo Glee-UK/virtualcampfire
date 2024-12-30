@@ -77,12 +77,12 @@ def output_song_list(song_list_file):
     with open(file_out, mode="w", encoding="utf-8") as output:
         output.write(
             page_template.render(songs=songs,
-                                 dateStamp=datetime.now(),
+                                 dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                  page_name=page_name,
                                  song_count=len(songs)))
         print(f"... wrote {song_list_file.replace('.txt', '.html')}")
 
-def output_new_lyric_page(lyric_file):
+def output_song_page(lyric_file):
     recording_stem = lyric_file.replace(".html", "").replace("[", "*").replace("]", "*")
     print(recording_stem)
     recordings = [i.replace("\\","/") for i in glob.glob("mp3/" + recording_stem + "*")]
@@ -95,33 +95,33 @@ def output_new_lyric_page(lyric_file):
     with open("lyrics/" + lyric_file, encoding="utf-8") as fp:
         soup = BeautifulSoup(fp, 'html.parser')
         title = soup.title.string.strip()
+        lyric = ""
         try:
             lyric = soup.pre.prettify()
         except AttributeError:
             print("Failed on " + lyric_file)
             print(soup.pre)
-        lyric = soup.pre.prettify().strip()
+        lyric = lyric.strip()
         with open("lyrics/" + lyric_file, mode="w", encoding="utf-8") as output:
             output.write(
                 page_template.render(title=title,
                                      lyric=lyric,
                                      songs=songs,
-                                     dateStamp=datetime.now()))
+                                     dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
 
 def output_all_lyric_pages(directory):
     lyrics = [i.replace("\\","/").replace(directory, "") for i in glob.glob(directory + "*.html")]
     for lyric in lyrics:
-        print (lyric)
-        output_new_lyric_page(lyric)
+        output_song_page(lyric)
 
 if __name__ == '__main__':
     arg1 = sys.argv[1]
     if arg1.endswith(".txt"):
         output_song_list(arg1)
     elif arg1.endswith(".html"):
-        output_new_lyric_page(arg1)
+        output_song_page(arg1)
     elif arg1.endswith("lyrics/"):
         output_all_lyric_pages(arg1)
     else:
-        print("missing .txt file")
+        print("Unrecognised arguments")
