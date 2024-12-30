@@ -84,11 +84,8 @@ def output_song_list(song_list_file):
 
 def output_song_page(lyric_file):
     recording_stem = lyric_file.replace(".html", "").replace("[", "*").replace("]", "*")
-    print(recording_stem)
     recordings = [i.replace("\\","/") for i in glob.glob("mp3/" + recording_stem + "*")]
-    print(recordings)
     recording_list = [i.replace("mp3/", "") for i in recordings]
-    print(recording_list)
     songs = songs_from_recording_list(recording_list)
     environment = Environment(loader=FileSystemLoader("."))
     page_template = environment.get_template("jinja_song.template")
