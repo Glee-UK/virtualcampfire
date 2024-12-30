@@ -1,25 +1,34 @@
 virtualcampfire
 ===============
 
-
 Copied from http://virtualcampfire.co.uk before it disappeared. 
-
 
 # Notes
 - The site is hosted on github pages.
 - SVG icons came from https://uxwing.com/
 
-
 # Local development
-Checkout, run:
+To generate a list page run:
 ```
 python jinja_site.py index.txt
 ```
 Then open index.html file in a browser.
 
+To generate a song page run:
+```
+python jinja_site.py Worried_Man.html
+```
+Then open Worried_Man.html file in a browser.
+
+To generate all song pages run:
+```
+python jinja_site.py lyrics/
+```
+
 # Updating the site
 Any change pushed to the branch gh-pages will be reflected on the site.
-This is done by a Github action that runs the script `site_jinja.py` and commits the changes to the gh-pages branch.
+This is done by a Github action that runs the script `site_jinja.py` 
+and commits the changes to the gh-pages branch.
 
 
 # Lyric format 
@@ -40,8 +49,8 @@ This is parsed to get the lyric file name.
 ```
 lyrics/<Song Title>.html
 ```
-All versions of a song have only one lyrics file. This maybe a weakness.
-lyrics/Example.html is the template for the lyric files.
+All versions of a song have only one lyrics file. 
+This maybe a weakness.
 
 
 # Song Data
@@ -56,8 +65,8 @@ and saved as songs.csv
 1. Ideally you know when and where recorded
 2. Download from email/whatsapp using the naming convention (regardless of mp3/mp4)
 3. If mp4 convert to mp3 at https://www.freeconvert.com/mp3-to-mp4/
-4. Copy lyrics/Example.html to lyrics/<Song Title>.html
-5. Update lyrics/<Song Title>.html with the lyrics from the PDF of the 2017 songbook
+4. Copy and existing lyric to lyrics/<Song Title>.html
+5. Update lyrics/<Song Title>.html with the lyrics from a PDF of the songbook or from the web
 6. git add mp3/<Song Title>.mp3 lyrics/<Song Title>.html
 7. python validate.py
 8. Copy output to the right place in songs.csv
@@ -70,4 +79,8 @@ and saved as songs.csv
 # To Do
 - Create song book content files for each song book
 - ~~Add lyrics for every song~~
-- Regenerate lyrics files giving all recordings of that song  
+- ~~Regenerate lyrics files giving all recordings of that song~~
+- Add MP3 tags to all MP3 files
+- Export to bandcamp
+- Export to funkwhale
+- Export to Spotify
