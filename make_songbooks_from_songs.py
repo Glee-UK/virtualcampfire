@@ -1,9 +1,9 @@
+#!/usr/bin/env python
+
 # Use the songs.csv file to generate the songbook_2017.txt file
 
 
-
 import csv
-import os
 
 rows = {}
 with open('songs.csv', newline='') as csvfile:
