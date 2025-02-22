@@ -121,7 +121,7 @@ if __name__ == '__main__':
     if arg1.endswith(".txt"):
         output_song_list(arg1)
     elif arg1.endswith(".html"):
-        output_song_page(arg1)
+        output_song_page(arg1.replace("lyrics/", ""))
     elif arg1.endswith("lyrics/"):
         output_all_lyric_pages(arg1)
     else:
