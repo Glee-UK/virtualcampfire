@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
  <head>
   <title>Virtual Campfire - Instrumental</title>
@@ -5,7 +6,7 @@
   <link href="songbook.css" rel="stylesheet" type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
-<body>
+<body onload="initPlayer()">
 <div id="banner" style="border:0px solid cyan; background-color:#004400;">
 <table width="100%">
 <tr><td>
@@ -33,21 +34,20 @@
    <a href="All_Songs.html">All versions of all songs</a>
   </p>
  </div>
+  <audio
+   id="player"
+   type="audio/mpeg"
+   style="width: 90%;align:center;"
+   controls
+  >
+Sorry: your browser appears to be unable to stream .mp3 audio.
+  </audio>
 </td><td>
  <div id=right style="float:right; border:0px solid red;"><a href="https://github.com/glee-uk/virtualcampfire">
   <img
    align=right decoding="async" width="149" height="149"
    src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png"
    alt="Fork me on GitHub" loading="lazy" ></a>
-  <audio
-   id="player"
-   type="audio/mpeg"
-   style="width: 90%;align:center;"
-   controls
-   loop
-  >
-Sorry: your browser appears to be unable to stream .mp3 audio.
-  </audio>
  </div>
 </td></tr>
 </table>
@@ -89,9 +89,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     Tin Whistle
-    
   </td>
   <td valign="center">
   
@@ -134,8 +132,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -216,8 +212,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -255,9 +249,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     Joe Buirski 2007-06
-    
   </td>
   <td valign="center">
   
@@ -300,8 +292,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -339,9 +329,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     01
-    
   </td>
   <td valign="center">
   
@@ -384,8 +372,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -423,9 +409,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     02
-    
   </td>
   <td valign="center">
   
@@ -468,8 +452,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -507,9 +489,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     03
-    
   </td>
   <td valign="center">
   
@@ -552,8 +532,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -591,9 +569,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     04
-    
   </td>
   <td valign="center">
   
@@ -636,8 +612,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -675,9 +649,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     05
-    
   </td>
   <td valign="center">
   
@@ -720,8 +692,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -759,9 +729,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     06
-    
   </td>
   <td valign="center">
   
@@ -804,8 +772,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -886,8 +852,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -925,9 +889,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
      </a>
   </td>
   <td>
-    
     Fiddle
-    
   </td>
   <td valign="center">
   
@@ -970,8 +932,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -1052,8 +1012,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -1134,8 +1092,6 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
             stroke-width="2"
             d="M122.85,61.45h0A61.39,61.39,0,0,0,61.45,0V0h0V0A61.38,61.38,0,0,0,0,61.43H0v0H0a61.35,61.35,0,0,0,61.4,61.38v0h0v0a61.34,61.34,0,0,0,61.38-61.4ZM61.44,91,33.92,60.47H51.5V39.2H71.38V60.47H89L61.44,91Zm48.28-29.54h0a48.36,48.36,0,0,1-48.27,48.29v0h0v0A48.35,48.35,0,0,1,13.14,61.47h0v0h0A48.27,48.27,0,0,1,61.41,13.14v0h0v0a48.3,48.3,0,0,1,48.27,48.3Z"/>
       </svg>
-
-
     </a>
   </td>
 </tr>
@@ -1146,23 +1102,10 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
 <div style="text-align:center; width:100%; margin: auto; border:0px solid cyan;">
 <div style="text-align:left;   width:80%;  margin: auto; border:0px solid pink;">
 <p>
-This page was originally put together by Leo Murray and Jack Freedman.
-</p>
-<p>
-<a href="http://oolong.co.uk">Fergus</a> took over the development of it in September 2009.
-</p>
-<p>
-<a href="http://tim.pizey.uk/">Tim</a> updated the site in July 2014, November 2017, April 2024
-</p>
-<p>
-A push by Oxford Glee in 2024 has led us to aim for a recording of every song<br>
-in all the <a href="../songbooks/">FSC songbooks</a>.
-</p>
-<p>
 Email <a href="mailto:tim.pizey+vc@gmail.com">Tim</a> to contribute songs or feedback.
 </p>
 <p>
-Last updated 2024-12-14 01:00:07.995606.
+Last updated 2025-02-24 10:47:08. 13 songs.
 </p>
 </div>
 </div>
