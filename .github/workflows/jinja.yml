@@ -53,6 +53,15 @@ jobs:
     - name: execute python script for The_Next_To_Come_In_1990
       run: |
         python jinja_site.py The_Next_To_Come_In_1990.txt
+    - name: execute python script for Arise
+      run: |
+        python jinja_site.py Arise.txt
+    - name: execute python script for Rounds
+      run: |
+        python jinja_site.py Rounds.txt
+    - name: execute python script for Instrumental
+      run: |
+        python jinja_site.py Instrumental.txt
     - name: execute python script for World Music
       run: |
         python jinja_site.py World_Music.txt
