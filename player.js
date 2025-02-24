@@ -4,9 +4,9 @@ function debug(str) {
 var playlist = [];
 var player;
 
-function pathFromUrl(url) {
+function idFromUrl(url) {
   var parts = url.split('/');
-  return  parts[parts.length - 1];
+  return  parts[parts.length - 1].replaceAll("'", "\\'");
 }
 
 function initPlayer(){
@@ -21,7 +21,7 @@ function initPlayer(){
       );
 
 	  if (playlist.length > 0) {
-        checkbox = document.getElementById(pathFromUrl(player.src));
+        checkbox = document.getElementById(idFromUrl(player.src));
         checkbox.checked = false;
         checkbox.style.accentColor = null;
 
@@ -55,7 +55,7 @@ function play(url) {
     debug('playing: ' + url
         +'\nplaylist: \n   ' + playlist.join('\n   ')
     );
-    id = pathFromUrl(url);
+    id = idFromUrl(url);
     checkbox = document.getElementById(id);
     if (checkbox == null) {
 	  debug('checkbox is null: ' + id);
