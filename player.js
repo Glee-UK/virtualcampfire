@@ -4,10 +4,11 @@ function debug(str) {
 var playlist = [];
 var player;
 
-function filenameFromUrl(url) {
+function pathFromUrl(url) {
   var parts = url.split('/');
-  return parts[parts.length - 1];
+  return 'mp3/' + parts[parts.length - 1];
 }
+
 function initPlayer(){
   player = document.getElementById('player');
   if (typeof player === 'undefined') {
@@ -15,35 +16,50 @@ function initPlayer(){
   } else {
     debug('adding ended event');
     player.addEventListener('ended', function() {
-        debug('ended'
-             +'\npaused: ' + player.paused
-             +'\nsrc: ' + player.src
-             +'\ntime: ' + player.currentTime
-             +'\nplaylist: ' + playlist
-        );
+      debug('ended: ' + player.src
+             +'\nplaylist: \n   ' + playlist.join('\n   ')
+      );
 
-	  if (playlist.length > 1) {
-  	  	    play(playlist.shift());
+	  if (playlist.length > 0) {
+        checkbox = document.getElementById(pathFromUrl(player.src));
+        checkbox.checked = false;
+        next_url = playlist.shift()
+  	  	play(next_url);
+      } else {
+        play(player.src)
       }
-      play(playlist[0])
     });
   }
 }
 
-function choose(url) {
-  playlist.push(url);
-  debug("Adding to playlist: " + url);
-  if (player.paused) {
-    play(url);
+function choose(url,checkbox) {
+  if (checkbox.checked) {
+    debug("Adding to playlist: " + url);
+    playlist.push(url);
+    if (player.paused) {
+        next_url = playlist.shift()
+  	  	play(next_url);
+   }
+  } else {
+	var index = playlist.indexOf(url);
+	if (index > -1) {
+	  debug("Removing from playlist: " + url);
+	  playlist.splice(index, 1);
+	}
   }
 }
 
 function play(url) {
-    debug('paused:' + player.paused
-         +'\nsrc:' + player.src
-         +'\ntime:' + player.currentTime
-         +'\nplaylist:' + playlist
+    debug('playing: ' + url
+        +'\nplaylist: \n   ' + playlist.join('\n   ')
     );
+    id = pathFromUrl(url);
+    checkbox = document.getElementById(id);
+    if (checkbox == null) {
+	  debug('checkbox is null: ' + id);
+	} else {
+      checkbox.style.accentColor = 'orange';
+    }
     player.src = url;
     player.play();
 }
