@@ -5,10 +5,10 @@
   <td>
      <input type="checkbox"
             name="choose"
-            id="{{relative_path}}{{song.escaped_path}}"
+            id="{{song.escaped_recording_file_name}}"
             title="{{song.title}}. [{{song.duration}}]."
             onchange="choose('{{relative_path}}{{song.escaped_path}}',this)"/>
-     <label for="{{relative_path}}{{song.escaped_path}}">
+     <label for="{{song.escaped_recording_file_name}}">
          {{song.title}}
      </label>
   </td>

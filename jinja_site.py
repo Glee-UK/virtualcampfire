@@ -43,6 +43,8 @@ def songs_from_recording_list(recording_list):
     songs = []
     for recording_file_name in recording_list:
         song = {}
+        song["recording_file_name"] = recording_file_name
+        song["escaped_recording_file_name"] = recording_file_name.replace("'", "\\'")
         title_version = recording_file_name.replace(".mp3", "")
         title = title_version.split("(")[0]
         title = title.strip()

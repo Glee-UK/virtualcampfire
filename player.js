@@ -6,7 +6,7 @@ var player;
 
 function pathFromUrl(url) {
   var parts = url.split('/');
-  return 'mp3/' + parts[parts.length - 1];
+  return  parts[parts.length - 1];
 }
 
 function initPlayer(){
@@ -23,6 +23,8 @@ function initPlayer(){
 	  if (playlist.length > 0) {
         checkbox = document.getElementById(pathFromUrl(player.src));
         checkbox.checked = false;
+        checkbox.style.accentColor = null;
+
         next_url = playlist.shift()
   	  	play(next_url);
       } else {
