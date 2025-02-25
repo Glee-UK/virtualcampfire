@@ -41,10 +41,15 @@ def recording_list_from_file(file_in):
 
 def songs_from_recording_list(recording_list):
     songs = []
+    index = 0
     for recording_file_name in recording_list:
         song = {}
+        index += 1
+        song["index"] = index
         song["recording_file_name"] = recording_file_name
         song["escaped_recording_file_name"] = recording_file_name.replace("'", "\\'")
+        # NOTE this ties html audio player sauce to html checkbox in player.js
+        song["html_id"] = recording_file_name.replace("'", "").replace(".mp3", "").replace("(", "").replace(")", "")
         title_version = recording_file_name.replace(".mp3", "")
         title = title_version.split("(")[0]
         title = title.strip()
@@ -78,7 +83,8 @@ def output_song_list(song_list_file):
     page_template = environment.get_template("jinja_recording_list.template")
     with open(file_out, mode="w", encoding="utf-8") as output:
         output.write(
-            page_template.render(songs=songs,
+            page_template.render(page_type='list',
+                                 songs=songs,
                                  dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                  page_name=page_name,
                                  song_count=len(songs),
@@ -105,7 +111,8 @@ def output_song_page(lyric_file):
         lyric = lyric.strip()
         with open("lyrics/" + lyric_file, mode="w", encoding="utf-8") as output:
             output.write(
-                page_template.render(title=title,
+                page_template.render(page_type='lyric',
+                                     title=title,
                                      lyric=lyric,
                                      songs=songs,
                                      dateStamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
