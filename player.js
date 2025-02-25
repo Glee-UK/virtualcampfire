@@ -5,33 +5,34 @@ var playlist = [];
 var player;
 
 function idFromUrl(url) {
+  if (url == null) {
+    alert('url is null');
+  }
   var parts = url.split('/');
-  return  parts[parts.length - 1].replaceAll("'", "\\'");
+  return  parts[parts.length - 1].replaceAll("'", "").replaceAll(".mp3", "").replaceAll("(", "").replaceAll(")", "")
 }
 
 function initPlayer(){
   player = document.getElementById('player');
-  if (typeof player === 'undefined') {
-    alert('your browser does not like audio.');
-  } else {
-    debug('adding ended event');
-    player.addEventListener('ended', function() {
-      debug('ended: ' + player.src
-             +'\nplaylist: \n   ' + playlist.join('\n   ')
-      );
+  player.addEventListener('ended', function() {
+    debug('ended: ' + player.src
+         +'\nplaylist: \n   ' + playlist.join('\n   ')
+    );
 
-	  if (playlist.length > 0) {
-        checkbox = document.getElementById(idFromUrl(player.src));
-        checkbox.checked = false;
-        checkbox.style.accentColor = null;
-
+    ended_song_id = idFromUrl(player.src);
+    checkbox = document.getElementById(ended_song_id);
+    if (checkbox == null) {
+      alert('checkbox is null: ' + ended_song_id);
+    }
+    checkbox.checked = false;
+    checkbox.style.accentColor = null;
+	if (playlist.length > 0) {
         next_url = playlist.shift()
-  	  	play(next_url);
-      } else {
+     	play(next_url);
+    } else {
         play(player.src)
-      }
-    });
-  }
+    }
+  });
 }
 
 function choose(url,checkbox) {
@@ -39,14 +40,22 @@ function choose(url,checkbox) {
     debug("Adding to playlist: " + url);
     playlist.push(url);
     if (player.paused) {
-        next_url = playlist.shift()
-  	  	play(next_url);
-   }
+      next_url = playlist.shift()
+  	  play(next_url);
+    }
   } else {
 	var index = playlist.indexOf(url);
 	if (index > -1) {
 	  debug("Removing from playlist: " + url);
 	  playlist.splice(index, 1);
+	} else {
+      checkbox.style.accentColor = null;
+      player.pause();
+      player.src = null;
+      next_url = playlist.shift()
+      if (next_url != null ){
+        play(next_url);
+      }
 	}
   }
 }
@@ -58,7 +67,7 @@ function play(url) {
     id = idFromUrl(url);
     checkbox = document.getElementById(id);
     if (checkbox == null) {
-	  debug('checkbox is null: ' + id);
+	  alert('checkbox is null: ' + id);
 	} else {
       checkbox.style.accentColor = 'orange';
     }
