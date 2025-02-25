@@ -5,17 +5,18 @@
   <td>
      <input type="checkbox"
             name="choose"
-            id="{{song.escaped_recording_file_name}}"
+            id="{{song.html_id}}"
             title="{{song.title}}. [{{song.duration}}]."
             onchange="choose('{{relative_path}}{{song.escaped_path}}',this)"/>
-     <label for="{{song.escaped_recording_file_name}}">
+     <label for="{{song.html_id}}">
          {{song.title}}
      </label>
   </td>
   <td>
     {{song.version}}
   </td>
-  <td valign="center">
+  {% if page_type =='list'  %}
+  <td>
   {% if song.lyric_exists  %}
 	<a href="{{relative_path}}{{song.lyric_name}}" target = "_" title="Lyrics for {{song.title}}">
 	  <svg
@@ -39,7 +40,8 @@
 	</a>
   {% endif %}
   </td>
-  <td >
+  {% endif %}
+  <td width="24px">
     <a href="{{relative_path}}{{song.path}}" title="Download {{song.size}}Mb mp3">
       <svg
           fill="#ffffff"
