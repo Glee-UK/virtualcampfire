@@ -30,7 +30,7 @@ Sorry: your browser appears to be unable to stream .mp3 audio.
 <div style="width:25em; text-align:left; padding-top:1em; border:0px solid red;">
 {{lyric}}
 </div>
-<div style="margin-top:10px; text-align:center; width:100%;  border:0px solid orange;">
+<div style="margin-top:10px; width:100%;  border:0px solid orange;">
 {% include "jinja_recording_table.templet" %}
 </div>
 <p>
