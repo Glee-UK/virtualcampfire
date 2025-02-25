@@ -23,7 +23,6 @@
    type="audio/mpeg"
    style="width:40%; align:center;"
    controls
-   src="{{relative_path}}{{songs[0]['escaped_path']}}"
   >
 Sorry: your browser appears to be unable to stream .mp3 audio.
   </audio>
