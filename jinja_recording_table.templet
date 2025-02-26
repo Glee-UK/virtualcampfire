@@ -7,7 +7,7 @@
             name="choose"
             id="{{song.html_id}}"
             title="{{song.title}}. [{{song.duration}}]."
-            onchange="choose('{{relative_path}}{{song.escaped_path}}',this)"/>
+            onclick="choose('{{relative_path}}{{song.escaped_path}}',this.checked)"/>
      <label for="{{song.html_id}}">
          {{song.title}}
      </label>

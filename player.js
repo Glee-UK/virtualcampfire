@@ -1,5 +1,8 @@
-function debug(str) { 
-  //   alert(str);
+function debug(str) {
+  //alert(str);
+}
+function log(str) {
+  //alert(str);
 }
 var playlist = [];
 var player;
@@ -24,22 +27,22 @@ function initPlayer(){
     if (checkbox == null) {
       alert('checkbox is null: ' + ended_song_id);
     }
+
+    checkbox.checked = false;
     checkbox.style.accentColor = null;
 	if (playlist.length > 0) {
-        checkbox.checked = false;
-        next_url = playlist.shift()
-        debug('choosing next: ' + next_url + ' checkbox' + checkbox.id);
-     	choose(next_url, checkbox);
+      next_url = playlist.shift()
+      debug('choosing next: ' + next_url );
+      play(next_url);
     } else {
-        debug('choosing this: ' + player.src + ' checkbox' + checkbox.id);
-        checkbox.checked = true;
-        choose(player.src, checkbox);
+      debug('choosing this: ' + player.src + ' checkbox' + checkbox.id);
+      play(player.src);
     }
   });
 }
 
-function choose(url,checkbox) {
-  if (checkbox.checked) {
+function choose(url,add) {
+  if (add) {
     debug("Adding to playlist: " + url);
     playlist.push(url);
     if (player.paused) {
@@ -51,20 +54,20 @@ function choose(url,checkbox) {
 	if (index > -1) {
 	  debug("Removing from playlist: " + url);
 	  playlist.splice(index, 1);
-	} else {
-      checkbox.style.accentColor = null;
-      player.pause();
-      player.src = null;
+	} else { // already playing
       next_url = playlist.shift()
       if (next_url != null ){
         play(next_url);
+      } else {
+        player.pause();
+        player.src = '';
       }
 	}
   }
 }
 
 function play(url) {
-    debug('play: ' + url
+    log('play: ' + url
         +'\nplaylist: \n   ' + playlist.join('\n   ')
     );
     id = idFromUrl(url);
@@ -72,6 +75,7 @@ function play(url) {
     if (checkbox == null) {
 	  alert('checkbox is null: ' + id);
 	} else {
+      checkbox.checked = true;
       checkbox.style.accentColor = 'orange';
     }
     player.src = url;
