@@ -1,5 +1,26 @@
+<script>
+function chooseAll(state) {
+  var allInputs = document.getElementsByTagName("input");
+  for (var i = 0, max = allInputs.length; i < max; i++){
+    if (allInputs[i].type === 'checkbox') {
+      if(allInputs[i].id != 'chooseAll'){
+        allInputs[i].click();
+      }
+    }
+  }
+}
+</script>
 <table id="songlist">
-
+<tr class="song">
+  <td>
+     <input type="checkbox"
+            id="chooseAll"
+            onclick="chooseAll(this.checked)"/>
+     <label for="chooseAll">
+         Select all songs
+     </label>
+  </td>
+</tr>
 {% for song in songs %}
 <tr class="song">
   <td>
