@@ -20,6 +20,11 @@ function chooseAll(state) {
          Select all songs
      </label>
   </td>
+  <td></td>
+{% if page_type =='list'  %}
+  <td></td>
+{% endif %}
+  <td width="24px"></td>
 </tr>
 {% for song in songs %}
 <tr class="song">
