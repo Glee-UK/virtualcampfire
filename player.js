@@ -24,13 +24,16 @@ function initPlayer(){
     if (checkbox == null) {
       alert('checkbox is null: ' + ended_song_id);
     }
-    checkbox.checked = false;
     checkbox.style.accentColor = null;
 	if (playlist.length > 0) {
+        checkbox.checked = false;
         next_url = playlist.shift()
-     	play(next_url);
+        debug('choosing next: ' + next_url + ' checkbox' + checkbox.id);
+     	choose(next_url, checkbox);
     } else {
-        play(player.src)
+        debug('choosing this: ' + player.src + ' checkbox' + checkbox.id);
+        checkbox.checked = true;
+        choose(player.src, checkbox);
     }
   });
 }
@@ -61,7 +64,7 @@ function choose(url,checkbox) {
 }
 
 function play(url) {
-    debug('playing: ' + url
+    debug('play: ' + url
         +'\nplaylist: \n   ' + playlist.join('\n   ')
     );
     id = idFromUrl(url);
