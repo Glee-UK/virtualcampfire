@@ -55,8 +55,29 @@ To know on earth that Lord Franklin do live
 </pre>
 </div>
 <div style="margin-top:10px; width:100%;  border:0px solid orange;">
+<script>
+function chooseAll(state) {
+  var allInputs = document.getElementsByTagName("input");
+  for (var i = 0, max = allInputs.length; i < max; i++){
+    if (allInputs[i].type === 'checkbox') {
+      if(allInputs[i].id != 'chooseAll'){
+        allInputs[i].click();
+      }
+    }
+  }
+}
+</script>
 <table id="songlist">
-
+<tr class="song">
+  <td>
+     <input type="checkbox"
+            id="chooseAll"
+            onclick="chooseAll(this.checked)"/>
+     <label for="chooseAll">
+         Select all songs
+     </label>
+  </td>
+</tr>
 
 <tr class="song">
   <td>
@@ -101,7 +122,7 @@ To know on earth that Lord Franklin do live
 Email <a href="mailto:tim.pizey+vc@gmail.com">Tim</a> to contribute songs or feedback.
 </p>
 <p>
-Last updated 2025-02-26 21:36:41.
+Last updated 2025-02-26 22:28:21.
 </p>
 </div>
 </body>
