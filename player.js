@@ -1,3 +1,4 @@
+
 function debug(str) {
   //alert(str);
 }
@@ -7,6 +8,7 @@ function log(str) {
 var playlist = [];
 var player;
 
+// Note the checkbox id and song url are tightly coupled, same logic repeated in jinja_site.py
 function idFromUrl(url) {
   if (url == null) {
     alert('url is null');
@@ -22,25 +24,24 @@ function initPlayer(){
          +'\nplaylist: \n   ' + playlist.join('\n   ')
     );
 
-    ended_song_id = idFromUrl(player.src);
-    checkbox = document.getElementById(ended_song_id);
-    if (checkbox == null) {
-      alert('checkbox is null: ' + ended_song_id);
-    }
-
-    checkbox.checked = false;
-    checkbox.style.accentColor = null;
+    uncheck(player.src);
 	if (playlist.length > 0) {
       next_url = playlist.shift()
       debug('choosing next: ' + next_url );
       play(next_url);
     } else {
-      debug('choosing this: ' + player.src + ' checkbox' + checkbox.id);
+      debug('choosing this: ' + player.src );
       play(player.src);
     }
   });
 }
 
+function uncheck(url) {
+    id = idFromUrl(url);
+    checkbox = document.getElementById(id);
+    checkbox.checked = false;
+    checkbox.style.accentColor = null;
+}
 function choose(url,add) {
   if (add) {
     debug("Adding to playlist: " + url);
@@ -50,6 +51,7 @@ function choose(url,add) {
   	  play(next_url);
     }
   } else {
+    uncheck(url);
 	var index = playlist.indexOf(url);
 	if (index > -1) {
 	  debug("Removing from playlist: " + url);
@@ -70,14 +72,9 @@ function play(url) {
     log('play: ' + url
         +'\nplaylist: \n   ' + playlist.join('\n   ')
     );
-    id = idFromUrl(url);
-    checkbox = document.getElementById(id);
-    if (checkbox == null) {
-	  alert('checkbox is null: ' + id);
-	} else {
-      checkbox.checked = true;
-      checkbox.style.accentColor = 'orange';
-    }
+    checkbox = document.getElementById(idFromUrl(url));
+    checkbox.checked = true;
+    checkbox.style.accentColor = 'orange';
     player.src = url;
     player.play();
 }
